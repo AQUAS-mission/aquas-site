@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const HeroSection = () => {
 	const sectionRef = useRef<HTMLElement>(null);
+	const [showScrollIndicator, setShowScrollIndicator] = useState(true);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -18,6 +19,27 @@ const HeroSection = () => {
 		}
 
 		return () => observer.disconnect();
+	}, []);
+
+	useEffect(() => {
+		// Fade out scroll indicator after 5 seconds
+		const timer = setTimeout(() => {
+			setShowScrollIndicator(false);
+		}, 5000);
+
+		// Fade out when user starts scrolling
+		const handleScroll = () => {
+			if (window.scrollY > 50) {
+				setShowScrollIndicator(false);
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			clearTimeout(timer);
+			window.removeEventListener("scroll", handleScroll);
+		};
 	}, []);
 
 	return (
@@ -77,7 +99,11 @@ const HeroSection = () => {
 			</div>
 
 			{/* Scroll Indicator */}
-			<div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-foreground/60 animate-bounce">
+			<div
+				className={`absolute bottom-12 left-1/2 transform -translate-x-1/2 text-foreground/60 animate-bounce transition-opacity duration-1000 ${
+					showScrollIndicator ? "opacity-100" : "opacity-0"
+				}`}
+			>
 				<div className="flex flex-col items-center">
 					<span className="text-sm mb-3 font-medium">
 						Scroll Down

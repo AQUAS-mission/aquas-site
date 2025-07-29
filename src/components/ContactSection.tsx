@@ -1,5 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
+import {
+	Mail,
+	MapPin,
+	Trees,
+	Droplets,
+	Fish,
+	Anchor,
+	Microscope,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -150,20 +158,6 @@ const ContactSection = () => {
 								</div>
 
 								<div className="flex items-center space-x-6">
-									<div className="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center">
-										<Phone className="w-6 h-6 text-secondary-foreground" />
-									</div>
-									<div>
-										<div className="text-surface-foreground font-semibold text-lg">
-											Phone
-										</div>
-										<div className="text-surface-foreground/70 text-lg">
-											+1 (212) 854-AQUAS
-										</div>
-									</div>
-								</div>
-
-								<div className="flex items-center space-x-6">
 									<div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
 										<MapPin className="w-6 h-6 text-accent-foreground" />
 									</div>
@@ -181,16 +175,38 @@ const ContactSection = () => {
 
 						<div className="bg-primary/10 p-8 rounded-2xl border border-border/10">
 							<h4 className="text-xl font-semibold mb-6 text-surface-foreground">
-								Perfect for:
+								Ideal Partners
 							</h4>
-							<ul className="space-y-3 text-surface-foreground/80 text-lg">
-								<li>• New York City Parks Department</li>
-								<li>
-									• Water treatment and desalination plants
+							<ul className="space-y-4 text-surface-foreground/80 text-lg">
+								<li className="flex items-center space-x-3">
+									<Trees className="w-5 h-5 text-primary" />
+									<span>
+										City Parks and environmental agencies
+									</span>
 								</li>
-								<li>• Local fisheries and port authorities</li>
-								<li>• Columbia University researchers</li>
-								<li>• New York environmental agencies</li>
+								<li className="flex items-center space-x-3">
+									<Droplets className="w-5 h-5 text-secondary" />
+									<span>
+										Water treatment and desalination plants
+									</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									<Fish className="w-5 h-5 text-accent" />
+									<span>
+										Commercial and recreational fisheries
+									</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									<Anchor className="w-5 h-5 text-destructive" />
+									<span>Port authorities</span>
+								</li>
+								<li className="flex items-center space-x-3">
+									<Microscope className="w-5 h-5 text-primary" />
+									<span>
+										Algaecide and water treatment
+										researchers
+									</span>
+								</li>
 							</ul>
 						</div>
 					</div>
