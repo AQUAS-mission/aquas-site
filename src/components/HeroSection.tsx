@@ -80,7 +80,7 @@ const HeroSection = () => {
 									.getElementById("solution")
 									?.scrollIntoView({ behavior: "smooth" })
 							}
-							className="btn-ocean shadow-glow"
+							className="btn-ocean"
 						>
 							Discover Our Technology
 						</button>
