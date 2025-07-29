@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
 	const sectionRef = useRef<HTMLElement>(null);
@@ -47,20 +48,52 @@ const ContactSection = () => {
 			return;
 		}
 
-		// Simulate form submission
+		// Show loading toast
 		toast({
-			title: "Message sent successfully!",
-			description: "We'll get back to you within 24 hours.",
+			title: "Sending message...",
+			description: "Please wait while we send your message.",
 		});
 
-		// Reset form
-		setFormData({
-			name: "",
-			company: "",
-			email: "",
-			position: "",
-			message: "",
-		});
+		// Send email using EmailJS
+		emailjs
+			.send(
+				"aquasmission",
+				"aquas-contact-template",
+				{
+					title: "AQUAS Contact Form - New Message",
+					name: formData.name,
+					company: formData.company,
+					email: formData.email,
+					time: new Date().toLocaleString(),
+					message: formData.message,
+				},
+				"3tweu6KWrcy77aVwp"
+			)
+			.then((response) => {
+				console.log("SUCCESS!", response.status, response.text);
+				toast({
+					title: "Message sent successfully!",
+					description: "We'll get back to you within 24 hours.",
+				});
+
+				// Reset form
+				setFormData({
+					name: "",
+					company: "",
+					email: "",
+					position: "",
+					message: "",
+				});
+			})
+			.catch((error) => {
+				console.log("FAILED...", error);
+				toast({
+					title: "Failed to send message",
+					description:
+						"Please try again or contact us directly at aquasmission@gmail.com",
+					variant: "destructive",
+				});
+			});
 	};
 
 	const handleInputChange = (
@@ -111,7 +144,7 @@ const ContactSection = () => {
 											Email
 										</div>
 										<div className="text-surface-foreground/70 text-lg">
-											aquas@columbia.edu
+											aquasmission@gmail.com
 										</div>
 									</div>
 								</div>
