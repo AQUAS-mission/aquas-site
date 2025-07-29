@@ -44,11 +44,11 @@ const HeroSection = () => {
 					</h1>
 
 					<h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-6 text-secondary leading-relaxed">
-						Autonomous Underwater Surveillance
+						Autonomous Water Quality Monitoring
 					</h2>
 
 					<p className="text-xl md:text-2xl mb-12 text-foreground/80 font-light italic max-w-2xl leading-relaxed">
-						Search and destroy algal blooms
+						Protecting New York's waterways with Columbia University
 					</p>
 
 					<div className="flex flex-col sm:flex-row gap-6">

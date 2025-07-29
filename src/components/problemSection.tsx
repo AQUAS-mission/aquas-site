@@ -60,11 +60,11 @@ const ProblemSection = () => {
 						</span>
 					</h2>
 					<p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
-						Algal blooms are rapidly expanding across our oceans,
-						creating dead zones, poisoning water supplies, and
-						devastating marine ecosystems. Current detection and
-						response methods are too slow and insufficient for this
-						growing crisis.
+						Algal blooms are rapidly expanding across New York's
+						waterways, affecting city parks, water treatment plants,
+						fisheries, and ports. Current manned sampling methods
+						are laborious, costly, and cannot scale to monitor HABs
+						at the scope over which they are occurring.
 					</p>
 				</div>
 
@@ -92,13 +92,14 @@ const ProblemSection = () => {
 
 				<div className="bg-surface p-12 md:p-16 rounded-3xl text-center shadow-ocean border border-border/10">
 					<h3 className="font-heading text-3xl md:text-4xl font-bold mb-6 text-surface-foreground">
-						Traditional monitoring is failing us
+						Current manned sampling is failing us
 					</h3>
 					<p className="text-surface-foreground/80 text-xl max-w-4xl mx-auto leading-relaxed font-light">
-						Satellite imagery is limited by cloud cover and
-						resolution. Manual sampling is expensive and reactive.
-						By the time blooms are detected, the damage is already
-						done. We need a new approach.
+						Traditional manned shipboard surveys are laborious,
+						costly, and temporally biased. They cannot be scaled to
+						monitor HABs at the global scope over which they are
+						occurring. We need an autonomous approach that can
+						provide daily monitoring at a low cost.
 					</p>
 				</div>
 			</div>
