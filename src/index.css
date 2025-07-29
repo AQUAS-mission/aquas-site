@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		/* Darker, sleeker ocean-inspired color scheme */
+		--primary: 201 100% 30%; /* #006B95 Deep Ocean Blue */
+		--primary-foreground: 0 0% 100%; /* White */
+
+		--secondary: 162 100% 35%; /* #00B38A Muted Seafoam Green */
+		--secondary-foreground: 0 0% 100%; /* White */
+
+		--accent: 48 100% 67%; /* #FFE156 Eco Yellow */
+		--accent-foreground: 0 0% 12%; /* Almost Black */
+
+		--background: 210 100% 8%; /* #0D1B2A Midnight Navy */
+		--foreground: 195 60% 96%; /* #F5F9FA Soft White-Blue */
+
+		--card: 212 25% 17%; /* #1B263B Slate Blue-Grey */
+		--card-foreground: 195 60% 96%; /* Light text */
+
+		--popover: 212 25% 17%; /* Slate Blue-Grey */
+		--popover-foreground: 195 60% 96%; /* Light text */
+
+		--muted: 212 25% 17%; /* Slate Blue-Grey */
+		--muted-foreground: 218 11% 65%; /* #CBD5E1 Steel Gray */
+
+		--border: 212 25% 25%; /* Darker border */
+		--input: 212 25% 20%; /* Darker input background */
+		--ring: 201 100% 30%; /* Primary for focus rings */
+
+		--destructive: 0 84% 60%; /* Red for errors */
+		--destructive-foreground: 0 0% 98%; /* White */
+
+		/* Surface variants */
+		--surface: 212 25% 17%; /* #1B263B Slate Blue-Grey */
+		--surface-foreground: 195 60% 96%; /* Light text */
+
+		--radius: 1rem;
+
+		/* Sidebar variables for compatibility */
+		--sidebar-background: 212 25% 17%;
+		--sidebar-foreground: 195 60% 96%;
+		--sidebar-primary: 201 100% 30%;
+		--sidebar-primary-foreground: 0 0% 100%;
+		--sidebar-accent: 212 25% 25%;
+		--sidebar-accent-foreground: 195 60% 96%;
+		--sidebar-border: 212 25% 25%;
+		--sidebar-ring: 201 100% 30%;
+	}
+}
+body {
+	font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+	background-color: hsl(var(--background));
+	color: hsl(var(--foreground));
+	scroll-behavior: smooth;
+}
+
+/* Typography */
+.font-heading {
+	font-family: "Space Grotesk", "DM Sans", sans-serif;
+	font-weight: 600;
+}
+
+/* Button styles */
+.btn-ocean {
+	@apply bg-primary text-primary-foreground px-10 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-primary/90 hover:scale-[1.02] hover:shadow-xl;
+}
+
+.btn-secondary {
+	@apply bg-transparent border-2 border-foreground/20 text-foreground px-10 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-foreground/5 hover:scale-[1.02] hover:border-foreground/40;
+}
+
+/* Gradients */
+.ocean-gradient {
+	background: linear-gradient(
+		135deg,
+		hsl(var(--primary)),
+		hsl(var(--secondary))
+	);
+}
+
+.section-gradient {
+	background: linear-gradient(
+		180deg,
+		hsl(var(--background)),
+		hsl(var(--surface))
+	);
+}
+
+.hero-gradient {
+	background: linear-gradient(
+		135deg,
+		hsl(var(--background)) 0%,
+		hsl(var(--surface)) / 80 100%
+	);
+}
+
+/* Shadows */
+.shadow-ocean {
+	box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.4);
+}
+
+.shadow-float {
+	box-shadow: 0 12px 35px -10px hsl(var(--foreground) / 0.15);
+}
+
+.shadow-glow {
+	box-shadow: 0 0 50px hsl(var(--accent) / 0.3);
+}
+
+/* Animations */
+.fade-in {
+	opacity: 0;
+	transform: translateY(40px);
+	transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.transition-smooth {
+	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Section spacing */
+.section-spacing {
+	@apply py-24 lg:py-32;
+}
+
+.container-padding {
+	@apply px-8 lg:px-12;
+}
