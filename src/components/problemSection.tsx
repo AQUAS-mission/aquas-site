@@ -23,25 +23,25 @@ const ProblemSection = () => {
 
 	const stats = [
 		{
-			icon: <DollarSign className="w-8 h-8 text-accent" />,
+			icon: <DollarSign className="w-5 h-5 text-accent" />,
 			title: "Economic Impact",
-			value: "$2.7 Billion",
+			value: "$2.7B",
 			description:
-				"In high-profile events like Florida's 2018 red tide, economic losses reached $2.7 billion statewide—$1.3 billion in Southwest Florida alone. On the West Coast, Pseudo-nitzschia blooms led to $97 million in lost crab revenue. Across the U.S., HABs cause approximately $50 million in annual damages to fisheries, tourism, and public health.",
+				"Florida's 2018 red tide caused $2.7B in losses. HABs cost $50M annually in fisheries, tourism, and public health damages across the U.S.",
 		},
 		{
-			icon: <Heart className="w-8 h-8 text-destructive" />,
+			icon: <Heart className="w-5 h-5 text-destructive" />,
 			title: "Health Crisis",
-			value: "200+ Species",
+			value: "200+",
 			description:
-				"Scientists have identified nearly 200 toxin-producing microalgae species globally, including dinoflagellates, cyanobacteria, and diatoms. These organisms release harmful compounds like microcystins, brevetoxins, and saxitoxins that threaten human and marine health.",
+				"Toxin-producing microalgae species release harmful compounds like microcystins and brevetoxins that threaten human and marine health.",
 		},
 		{
-			icon: <AlertTriangle className="w-8 h-8 text-primary" />,
-			title: "Environmental Damage",
-			value: "400+ Dead Zones",
+			icon: <AlertTriangle className="w-5 h-5 text-primary" />,
+			title: "Dead Zones",
+			value: "400+",
 			description:
-				"There are over 400 documented oceanic 'dead zones' worldwide, covering a total area of 95,000–245,000 km²—zones where algal blooms have depleted oxygen and devastated marine life. The Gulf of Mexico alone sees seasonal hypoxic zones reaching up to 14,000 km² annually.",
+				"Oceanic dead zones cover 245,000 km² worldwide. The Gulf of Mexico alone sees seasonal hypoxic zones reaching 14,000 km² annually.",
 		},
 	];
 
@@ -49,17 +49,32 @@ const ProblemSection = () => {
 		<section
 			id="problem"
 			ref={sectionRef}
-			className="section-spacing section-gradient fade-in"
+			className="section-gradient fade-in"
+			style={{
+				minHeight: "calc(100vh - 80px)", // Account for navbar height
+				maxHeight: "calc(100vh - 80px)",
+			}}
 		>
-			<div className="container mx-auto container-padding">
-				<div className="text-center mb-20">
-					<h2 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground leading-tight">
+			<div className="container mx-auto container-padding h-full flex flex-col py-6">
+				{/* Header - Fixed top section */}
+				<div className="text-center mb-6">
+					<h2
+						className="font-heading font-bold text-foreground leading-tight mb-3"
+						style={{
+							fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)", // Slightly smaller to fit better
+						}}
+					>
 						The Growing Threat of
-						<span className="block text-destructive mt-2">
+						<span className="block text-destructive mt-1">
 							Harmful Algal Blooms
 						</span>
 					</h2>
-					<p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+					<p
+						className="text-muted-foreground max-w-4xl mx-auto leading-relaxed"
+						style={{
+							fontSize: "clamp(0.85rem, 1.8vw, 1.1rem)", // Slightly smaller
+						}}
+					>
 						Algal blooms are rapidly expanding across New York's
 						waterways, affecting city parks, water treatment plants,
 						fisheries, and ports. Current manned sampling methods
@@ -68,33 +83,64 @@ const ProblemSection = () => {
 					</p>
 				</div>
 
-				<div className="grid lg:grid-cols-3 gap-8 mb-20">
+				{/* Stats Grid - Flexible middle section */}
+				<div className="grid lg:grid-cols-3 gap-4 lg:gap-6 flex-1 min-h-0 mb-6">
 					{stats.map((stat, index) => (
 						<div
 							key={index}
-							className="bg-card p-10 rounded-3xl shadow-float hover:shadow-ocean transition-smooth text-center border border-border/10"
+							className="bg-card p-4 lg:p-6 rounded-2xl shadow-float hover:shadow-ocean transition-smooth text-center border border-border/10 flex flex-col"
 						>
-							<div className="flex justify-center mb-6">
+							{/* Icon and title inline */}
+							<div className="flex items-center justify-center gap-2 mb-3">
 								{stat.icon}
+								<h3
+									className="font-semibold text-card-foreground"
+									style={{
+										fontSize:
+											"clamp(0.9rem, 1.5vw, 1.125rem)",
+									}}
+								>
+									{stat.title}
+								</h3>
 							</div>
-							<h3 className="text-2xl font-semibold mb-4 text-card-foreground">
-								{stat.title}
-							</h3>
-							<div className="text-4xl font-bold mb-6 text-primary font-heading">
+
+							<div
+								className="font-bold mb-3 text-primary font-heading"
+								style={{
+									fontSize: "clamp(1.25rem, 2.5vw, 1.875rem)",
+								}}
+							>
 								{stat.value}
 							</div>
-							<p className="text-muted-foreground leading-relaxed text-lg">
+
+							<p
+								className="text-muted-foreground leading-relaxed flex-1"
+								style={{
+									fontSize: "clamp(0.7rem, 1.1vw, 0.85rem)", // Smaller to fit better
+								}}
+							>
 								{stat.description}
 							</p>
 						</div>
 					))}
 				</div>
 
-				<div className="bg-surface p-12 md:p-16 rounded-3xl text-center shadow-ocean border border-border/10">
-					<h3 className="font-heading text-3xl md:text-4xl font-bold mb-6 text-surface-foreground">
+				{/* Bottom Callout - Fixed bottom section */}
+				<div className="bg-surface p-4 lg:p-6 rounded-2xl text-center shadow-ocean border border-border/10">
+					<h3
+						className="font-heading font-bold mb-2 text-surface-foreground"
+						style={{
+							fontSize: "clamp(1rem, 1.8vw, 1.25rem)", // Smaller to fit
+						}}
+					>
 						Current manned sampling is failing us
 					</h3>
-					<p className="text-surface-foreground/80 text-xl max-w-4xl mx-auto leading-relaxed font-light">
+					<p
+						className="text-surface-foreground/80 max-w-3xl mx-auto leading-relaxed"
+						style={{
+							fontSize: "clamp(0.75rem, 1.2vw, 0.9rem)", // Smaller to fit
+						}}
+					>
 						Traditional manned shipboard surveys are laborious,
 						costly, and temporally biased. They cannot be scaled to
 						monitor HABs at the global scope over which they are
