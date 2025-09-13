@@ -65,31 +65,21 @@ const HeroSection = () => {
 						className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold mb-8 leading-[0.9] tracking-tight"
 						style={{
 							textShadow:
-								"0 4px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3)",
+								"0 6px 12px rgba(0, 0, 0, 0.8), 0 3px 6px rgba(0, 0, 0, 0.5)",
 						}}
 					>
 						<span className="block text-foreground">AQUAS</span>
 					</h1>
 
 					<h2
-						className="text-2xl md:text-3xl lg:text-4xl font-medium mb-6 text-secondary leading-relaxed"
+						className="text-2xl md:text-3xl lg:text-4xl font-medium mb-12 text-secondary leading-relaxed"
 						style={{
 							textShadow:
-								"0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2)",
+								"0 4px 8px rgba(0, 0, 0, 0.7), 0 2px 4px rgba(0, 0, 0, 0.4)",
 						}}
 					>
-						Autonomous Water Quality Monitoring
+						Autonomous HAB Detection and Cleaning
 					</h2>
-
-					<p
-						className="text-xl md:text-2xl mb-12 text-foreground/80 font-light italic max-w-2xl leading-relaxed"
-						style={{
-							textShadow:
-								"0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2)",
-						}}
-					>
-						Protecting New York's waterways with Columbia University
-					</p>
 
 					<div className="flex flex-col sm:flex-row gap-6">
 						<button
@@ -126,7 +116,7 @@ const HeroSection = () => {
 					<span
 						className="text-sm mb-3 font-medium"
 						style={{
-							textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+							textShadow: "0 2px 4px rgba(0, 0, 0, 0.6)",
 						}}
 					>
 						Scroll Down
