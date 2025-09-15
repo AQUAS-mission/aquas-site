@@ -55,13 +55,13 @@ const ProblemSection = () => {
 				maxHeight: "calc(100vh - 80px)",
 			}}
 		>
-			<div className="container mx-auto container-padding h-full flex flex-col py-6">
+			<div className="container mx-auto container-padding h-full flex flex-col pt-12 pb-4">
 				{/* Header - Fixed top section */}
 				<div className="text-center mb-6">
 					<h2
 						className="font-heading font-bold text-foreground leading-tight mb-3"
 						style={{
-							fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)", // Slightly smaller to fit better
+							fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
 						}}
 					>
 						The Growing Threat of
@@ -72,7 +72,7 @@ const ProblemSection = () => {
 					<p
 						className="text-muted-foreground max-w-4xl mx-auto leading-relaxed"
 						style={{
-							fontSize: "clamp(0.85rem, 1.8vw, 1.1rem)", // Slightly smaller
+							fontSize: "clamp(0.85rem, 1.8vw, 1.1rem)",
 						}}
 					>
 						Algal blooms are rapidly expanding across New York's
@@ -84,11 +84,11 @@ const ProblemSection = () => {
 				</div>
 
 				{/* Stats Grid - Flexible middle section */}
-				<div className="grid lg:grid-cols-3 gap-4 lg:gap-6 flex-1 min-h-0 mb-6">
+				<div className="grid lg:grid-cols-3 gap-4 lg:gap-6 flex-1 min-h-0 mb-4">
 					{stats.map((stat, index) => (
 						<div
 							key={index}
-							className="bg-card p-4 lg:p-6 rounded-2xl shadow-float hover:shadow-ocean transition-smooth text-center border border-border/10 flex flex-col"
+							className="bg-card p-4 lg:p-6 rounded-2xl shadow-float transition-smooth text-center border border-border/10 flex flex-col"
 						>
 							{/* Icon and title inline */}
 							<div className="flex items-center justify-center gap-2 mb-3">
@@ -116,7 +116,7 @@ const ProblemSection = () => {
 							<p
 								className="text-muted-foreground leading-relaxed flex-1"
 								style={{
-									fontSize: "clamp(0.7rem, 1.1vw, 0.85rem)", // Smaller to fit better
+									fontSize: "clamp(0.7rem, 1.1vw, 0.85rem)",
 								}}
 							>
 								{stat.description}
@@ -126,11 +126,11 @@ const ProblemSection = () => {
 				</div>
 
 				{/* Bottom Callout - Fixed bottom section */}
-				<div className="bg-surface p-4 lg:p-6 rounded-2xl text-center shadow-ocean border border-border/10">
+				<div className="bg-surface p-4 lg:p-6 rounded-2xl text-center shadow-float border border-border/10">
 					<h3
 						className="font-heading font-bold mb-2 text-surface-foreground"
 						style={{
-							fontSize: "clamp(1rem, 1.8vw, 1.25rem)", // Smaller to fit
+							fontSize: "clamp(1rem, 1.8vw, 1.25rem)",
 						}}
 					>
 						Current manned sampling is failing us
@@ -138,7 +138,7 @@ const ProblemSection = () => {
 					<p
 						className="text-surface-foreground/80 max-w-3xl mx-auto leading-relaxed"
 						style={{
-							fontSize: "clamp(0.75rem, 1.2vw, 0.9rem)", // Smaller to fit
+							fontSize: "clamp(0.75rem, 1.2vw, 0.9rem)",
 						}}
 					>
 						Traditional manned shipboard surveys are laborious,

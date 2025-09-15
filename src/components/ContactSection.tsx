@@ -122,17 +122,12 @@ const ContactSection = () => {
 			<div className="container mx-auto container-padding">
 				<div className="text-center mb-20">
 					<h2 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-surface-foreground leading-tight">
-						Join the Mission to
+						Partner with <span className="text-primary">AQUAS</span>{" "}
+						to
 						<span className="block text-secondary mt-2">
-							Protect New York's Waterways
+							clean up and preserve your waterways.
 						</span>
 					</h2>
-					<p className="text-xl md:text-2xl text-surface-foreground/80 max-w-4xl mx-auto leading-relaxed font-light">
-						Partner with Columbia University to deploy AQUAS
-						technology and make a real difference in New York's
-						water quality. Together, we can improve Columbia's
-						relationship with the local community and the City.
-					</p>
 				</div>
 
 				<div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
