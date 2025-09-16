@@ -49,7 +49,7 @@ const ProblemSection = () => {
 		<section
 			id="problem"
 			ref={sectionRef}
-			className="section-gradient fade-in"
+			className="bg-surface fade-in"
 			style={{
 				minHeight: "calc(100vh - 80px)", // Account for navbar height
 				maxHeight: "calc(100vh - 80px)",
@@ -88,13 +88,13 @@ const ProblemSection = () => {
 					{stats.map((stat, index) => (
 						<div
 							key={index}
-							className="bg-card p-4 lg:p-6 rounded-2xl shadow-float transition-smooth text-center border border-border/10 flex flex-col"
+							className="bg-white/10 backdrop-blur-md border border-white/20 p-4 lg:p-6 rounded-2xl transition-smooth text-center flex flex-col hover:bg-white/20 hover:scale-[1.02] hover:shadow-xl"
 						>
 							{/* Icon and title inline */}
 							<div className="flex items-center justify-center gap-2 mb-3">
 								{stat.icon}
 								<h3
-									className="font-semibold text-card-foreground"
+									className="font-semibold text-foreground"
 									style={{
 										fontSize:
 											"clamp(0.9rem, 1.5vw, 1.125rem)",
@@ -126,9 +126,9 @@ const ProblemSection = () => {
 				</div>
 
 				{/* Bottom Callout - Fixed bottom section */}
-				<div className="bg-surface p-4 lg:p-6 rounded-2xl text-center shadow-float border border-border/10">
+				<div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 lg:p-6 rounded-2xl text-center hover:bg-white/20 hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
 					<h3
-						className="font-heading font-bold mb-2 text-surface-foreground"
+						className="font-heading font-bold mb-2 text-foreground"
 						style={{
 							fontSize: "clamp(1rem, 1.8vw, 1.25rem)",
 						}}
@@ -136,7 +136,7 @@ const ProblemSection = () => {
 						Current manned sampling is failing us
 					</h3>
 					<p
-						className="text-surface-foreground/80 max-w-3xl mx-auto leading-relaxed"
+						className="text-muted-foreground max-w-3xl mx-auto leading-relaxed"
 						style={{
 							fontSize: "clamp(0.75rem, 1.2vw, 0.9rem)",
 						}}

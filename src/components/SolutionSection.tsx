@@ -145,16 +145,20 @@ const SolutionSection = () => {
 							</div>
 						</div>
 						<div className="text-center">
-							<div className="w-64 h-64 mx-auto ocean-gradient rounded-full flex items-center justify-center shadow-ocean">
-								<div className="text-white text-center">
-									<Waves className="w-20 h-20 mx-auto mb-3" />
-									<div className="text-lg font-semibold">
-										AQUAS
-									</div>
-									<div className="text-sm opacity-90">
-										Technology
-									</div>
-								</div>
+							<div className="w-80 h-80 mx-auto rounded-3xl overflow-hidden shadow-ocean">
+								<video
+									className="w-full h-full object-cover"
+									autoPlay
+									loop
+									muted
+									playsInline
+								>
+									<source
+										src="/path-to-your-video.mp4"
+										type="video/mp4"
+									/>
+									Your browser does not support the video tag.
+								</video>
 							</div>
 						</div>
 					</div>
