@@ -129,20 +129,12 @@ const HowAquasWorksSection = () => {
 							</div>
 						</div>
 						<div className="text-center flex items-center justify-center">
-							<div className="w-64 h-64 lg:w-80 lg:h-80 mx-auto rounded-3xl overflow-hidden shadow-ocean">
-								<video
+							<div className="w-80 h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] mx-auto rounded-3xl overflow-hidden shadow-ocean">
+								<img
+									src="/aquas_rendering.png"
+									alt="AQUAS system rendering showing the autonomous water quality monitoring and treatment device"
 									className="w-full h-full object-cover"
-									autoPlay
-									loop
-									muted
-									playsInline
-								>
-									<source
-										src="/path-to-your-video.mp4"
-										type="video/mp4"
-									/>
-									Your browser does not support the video tag.
-								</video>
+								/>
 							</div>
 						</div>
 					</div>
