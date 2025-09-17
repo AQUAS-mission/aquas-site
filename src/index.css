@@ -57,13 +57,18 @@ body {
 	font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 	background-color: hsl(var(--background));
 	color: hsl(var(--foreground));
-	scroll-behavior: smooth;
 }
 
-/* Gentle Scroll Snap Container */
+/* Subtle Scroll Snap Container - Very Gentle */
 html {
-	scroll-snap-type: y proximity; /* Changed from mandatory to proximity for gentler snapping */
+	scroll-behavior: smooth;
 	scroll-padding-top: 80px; /* Account for navbar height */
+	/* Only enable scroll snap on desktop for very subtle effect */
+}
+
+/* Smooth scrolling for all elements */
+* {
+	scroll-behavior: smooth;
 }
 
 /* Typography */
@@ -145,21 +150,15 @@ html {
 	@apply px-8 lg:px-12;
 }
 
-/* Gentle Scroll Snap Sections */
+/* Very Subtle Scroll Snap - Only on Desktop and Only When Very Close */
 .scroll-snap-section {
-	scroll-snap-align: start;
-	scroll-snap-stop: normal; /* Changed from always to normal for gentler behavior */
+	/* Remove all scroll snap properties by default */
 }
 
-/* Hero section doesn't need navbar offset */
-#hero.scroll-snap-section {
-	scroll-snap-align: start;
-}
-
-/* Smooth scroll snap behavior with reduced motion support */
-@media (prefers-reduced-motion: no-preference) {
+/* Only enable very subtle scroll snap on large screens */
+@media (min-width: 1280px) and (prefers-reduced-motion: no-preference) {
 	html {
-		scroll-snap-type: y proximity; /* Gentler than mandatory */
+		scroll-snap-type: y proximity;
 		scroll-padding-top: 80px;
 	}
 
@@ -167,12 +166,33 @@ html {
 		scroll-snap-align: start;
 		scroll-snap-stop: normal;
 	}
+
+	/* Hero section doesn't need navbar offset */
+	#hero.scroll-snap-section {
+		scroll-snap-align: start;
+	}
 }
 
-/* Disable scroll snap on mobile and tablets for better touch experience */
-@media (max-width: 1024px) {
+/* Completely disable scroll snap on tablets and mobile */
+@media (max-width: 1279px) {
 	html {
-		scroll-snap-type: none;
+		scroll-snap-type: none !important;
 		scroll-padding-top: 0;
+	}
+
+	.scroll-snap-section {
+		scroll-snap-align: none !important;
+	}
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+		scroll-snap-type: none !important;
+	}
+
+	* {
+		scroll-behavior: auto;
 	}
 }

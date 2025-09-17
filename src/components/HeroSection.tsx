@@ -1,5 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 
+// Gentle easing function
+const easeOutQuart = (t: number): number => {
+	return 1 - Math.pow(1 - t, 4);
+};
+
+// Responsive smooth scroll function
+const responsiveScrollTo = (targetPosition: number, duration: number = 500) => {
+	const startPosition = window.pageYOffset;
+	const distance = targetPosition - startPosition;
+	const startTime = performance.now();
+
+	const animateScroll = (currentTime: number) => {
+		const elapsed = currentTime - startTime;
+		const progress = Math.min(elapsed / duration, 1);
+		const easedProgress = easeOutQuart(progress);
+
+		window.scrollTo(0, startPosition + distance * easedProgress);
+
+		if (progress < 1) {
+			requestAnimationFrame(animateScroll);
+		}
+	};
+
+	requestAnimationFrame(animateScroll);
+};
+
 const HeroSection = () => {
 	const sectionRef = useRef<HTMLElement>(null);
 	const [showScrollIndicator, setShowScrollIndicator] = useState(true);
@@ -42,6 +68,21 @@ const HeroSection = () => {
 		};
 	}, []);
 
+	const scrollToSection = (sectionId: string) => {
+		const section = document.getElementById(sectionId);
+		if (section) {
+			const rect = section.getBoundingClientRect();
+			const scrollTop = window.pageYOffset;
+			const sectionTop = scrollTop + rect.top;
+
+			// Account for navbar height
+			const targetPosition = sectionTop - 80;
+
+			// Use responsive scroll with shorter duration
+			responsiveScrollTo(targetPosition, 500);
+		}
+	};
+
 	return (
 		<section
 			id="hero"
@@ -83,39 +124,13 @@ const HeroSection = () => {
 
 					<div className="flex flex-col sm:flex-row gap-6">
 						<button
-							onClick={() => {
-								const section =
-									document.getElementById("solution");
-								if (section) {
-									const rect =
-										section.getBoundingClientRect();
-									const scrollTop = window.pageYOffset;
-									const sectionTop = scrollTop + rect.top;
-									window.scrollTo({
-										top: sectionTop - 80, // Account for navbar
-										behavior: "smooth",
-									});
-								}
-							}}
+							onClick={() => scrollToSection("solution")}
 							className="btn-ocean"
 						>
 							Discover Our Technology
 						</button>
 						<button
-							onClick={() => {
-								const section =
-									document.getElementById("contact");
-								if (section) {
-									const rect =
-										section.getBoundingClientRect();
-									const scrollTop = window.pageYOffset;
-									const sectionTop = scrollTop + rect.top;
-									window.scrollTo({
-										top: sectionTop - 80, // Account for navbar
-										behavior: "smooth",
-									});
-								}
-							}}
+							onClick={() => scrollToSection("contact")}
 							className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground px-10 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-white/20 hover:scale-[1.02] hover:shadow-xl"
 						>
 							Join Our Mission

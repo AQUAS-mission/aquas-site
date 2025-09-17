@@ -1,6 +1,32 @@
 import { useState, useEffect } from "react";
 import { Ship } from "lucide-react";
 
+// Gentle easing function
+const easeOutQuart = (t: number): number => {
+	return 1 - Math.pow(1 - t, 4);
+};
+
+// Responsive smooth scroll function
+const responsiveScrollTo = (targetPosition: number, duration: number = 500) => {
+	const startPosition = window.pageYOffset;
+	const distance = targetPosition - startPosition;
+	const startTime = performance.now();
+
+	const animateScroll = (currentTime: number) => {
+		const elapsed = currentTime - startTime;
+		const progress = Math.min(elapsed / duration, 1);
+		const easedProgress = easeOutQuart(progress);
+
+		window.scrollTo(0, startPosition + distance * easedProgress);
+
+		if (progress < 1) {
+			requestAnimationFrame(animateScroll);
+		}
+	};
+
+	requestAnimationFrame(animateScroll);
+};
+
 const Navbar = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 
@@ -23,10 +49,8 @@ const Navbar = () => {
 			const targetPosition =
 				sectionId === "hero" ? sectionTop : sectionTop - 80; // 80px navbar height
 
-			window.scrollTo({
-				top: targetPosition,
-				behavior: "smooth",
-			});
+			// Use responsive scroll with shorter duration
+			responsiveScrollTo(targetPosition, 500);
 		}
 	};
 

@@ -7,12 +7,42 @@ interface ScrollSnapOptions {
 	navbarHeight?: number; // Height of navbar to offset scroll position
 }
 
+// Very gentle easing function
+const easeOutQuart = (t: number): number => {
+	return 1 - Math.pow(1 - t, 4);
+};
+
+// Subtle smooth scroll function
+const gentleScrollTo = (targetPosition: number, duration: number = 600) => {
+	const startPosition = window.pageYOffset;
+	const distance = targetPosition - startPosition;
+
+	// Don't snap if the distance is very small
+	if (Math.abs(distance) < 20) return;
+
+	const startTime = performance.now();
+
+	const animateScroll = (currentTime: number) => {
+		const elapsed = currentTime - startTime;
+		const progress = Math.min(elapsed / duration, 1);
+		const easedProgress = easeOutQuart(progress);
+
+		window.scrollTo(0, startPosition + distance * easedProgress);
+
+		if (progress < 1) {
+			requestAnimationFrame(animateScroll);
+		}
+	};
+
+	requestAnimationFrame(animateScroll);
+};
+
 export const useScrollSnap = (options: ScrollSnapOptions = {}) => {
 	const {
-		threshold = 0.5, // Increased threshold for gentler snapping
-		snapDuration = 1000, // Longer duration for smoother animation
+		threshold = 0.15, // Much smaller threshold - only snap when very close
+		snapDuration = 600, // Shorter, more responsive duration
 		enabled = true,
-		navbarHeight = 80, // Default navbar height
+		navbarHeight = 80,
 	} = options;
 
 	const snapToSection = useCallback(
@@ -29,13 +59,11 @@ export const useScrollSnap = (options: ScrollSnapOptions = {}) => {
 						? sectionTop
 						: sectionTop - navbarHeight;
 
-				window.scrollTo({
-					top: targetPosition,
-					behavior: "smooth",
-				});
+				// Use gentle scroll
+				gentleScrollTo(targetPosition, snapDuration);
 			}
 		},
-		[navbarHeight]
+		[navbarHeight, snapDuration]
 	);
 
 	useEffect(() => {
@@ -43,15 +71,34 @@ export const useScrollSnap = (options: ScrollSnapOptions = {}) => {
 
 		let isSnapping = false;
 		let snapTimeout: NodeJS.Timeout;
+		let lastScrollTime = 0;
+		let scrollVelocity = 0;
+		let lastScrollPosition = window.pageYOffset;
 
 		const handleScroll = () => {
 			if (isSnapping) return;
 
+			const now = performance.now();
+			const currentScrollPosition = window.pageYOffset;
+
+			// Calculate scroll velocity
+			if (now - lastScrollTime > 0) {
+				scrollVelocity =
+					Math.abs(currentScrollPosition - lastScrollPosition) /
+					(now - lastScrollTime);
+			}
+
+			lastScrollTime = now;
+			lastScrollPosition = currentScrollPosition;
+
 			// Clear existing timeout
 			clearTimeout(snapTimeout);
 
-			// Set a timeout to check if we should snap after scrolling stops
+			// Only consider snapping if scroll velocity is very low (user has nearly stopped)
 			snapTimeout = setTimeout(() => {
+				// Don't snap if user is still scrolling fast
+				if (scrollVelocity > 0.3) return;
+
 				const sections = document.querySelectorAll(
 					".scroll-snap-section"
 				);
@@ -74,14 +121,13 @@ export const useScrollSnap = (options: ScrollSnapOptions = {}) => {
 
 					const distance = Math.abs(scrollTop - adjustedSectionTop);
 
-					// Check if section is partially visible and within threshold
-					const isVisible =
-						rect.top < viewportHeight && rect.bottom > 0;
-					const isCloseEnough = distance < viewportHeight * threshold;
+					// Much stricter visibility and proximity requirements
+					const isNearTop = rect.top > -100 && rect.top < 100; // Very close to top
+					const isVeryClose = distance < viewportHeight * threshold; // Much smaller threshold
 
 					if (
-						isVisible &&
-						isCloseEnough &&
+						isNearTop &&
+						isVeryClose &&
 						distance < closestDistance
 					) {
 						closestDistance = distance;
@@ -89,20 +135,20 @@ export const useScrollSnap = (options: ScrollSnapOptions = {}) => {
 					}
 				});
 
-				// Snap to the closest section if found
-				if (closestSection) {
+				// Only snap if we're REALLY close (within 50px)
+				if (closestSection && closestDistance < 50) {
 					const sectionId = closestSection.getAttribute("id");
 					if (sectionId) {
 						isSnapping = true;
 						snapToSection(sectionId);
 
-						// Reset snapping flag after animation
+						// Shorter reset time
 						setTimeout(() => {
 							isSnapping = false;
-						}, snapDuration);
+						}, snapDuration + 100);
 					}
 				}
-			}, 300); // Increased delay for gentler behavior
+			}, 800); // Longer delay - only snap when user has really stopped
 		};
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
