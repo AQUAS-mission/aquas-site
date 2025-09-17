@@ -88,7 +88,7 @@ const ProblemSection = () => {
 					{stats.map((stat, index) => (
 						<div
 							key={index}
-							className="bg-white/10 backdrop-blur-md border border-white/20 p-4 lg:p-6 rounded-2xl transition-smooth text-center flex flex-col hover:bg-white/20 hover:scale-[1.02] hover:shadow-xl"
+							className="bg-white/10 backdrop-blur-md border border-white/10 p-4 lg:p-6 rounded-2xl transition-smooth text-center flex flex-col hover:bg-white/20 hover:scale-[1.02] hover:shadow-xl"
 						>
 							{/* Icon and title inline */}
 							<div className="flex items-center justify-center gap-2 mb-3">
@@ -105,9 +105,9 @@ const ProblemSection = () => {
 							</div>
 
 							<div
-								className="font-bold mb-3 text-primary font-heading"
+								className="font-black mb-3 text-accent font-heading"
 								style={{
-									fontSize: "clamp(1.25rem, 2.5vw, 1.875rem)",
+									fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
 								}}
 							>
 								{stat.value}
@@ -126,7 +126,7 @@ const ProblemSection = () => {
 				</div>
 
 				{/* Bottom Callout - Fixed bottom section */}
-				<div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 lg:p-6 rounded-2xl text-center hover:bg-white/20 hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
+				<div className="bg-white/10 backdrop-blur-md border border-white/10 p-4 lg:p-6 rounded-2xl text-center hover:bg-white/20 hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
 					<h3
 						className="font-heading font-bold mb-2 text-foreground"
 						style={{

@@ -91,7 +91,7 @@ const SolutionSection = () => {
 					{features.map((feature, index) => (
 						<div
 							key={index}
-							className="bg-card p-4 lg:p-6 rounded-2xl shadow-float hover:shadow-ocean transition-smooth border border-border/10 flex flex-col"
+							className="bg-card p-4 lg:p-6 rounded-2xl shadow-float hover:shadow-ocean transition-smooth border border-border/10 flex flex-col hover:scale-[1.02] hover:bg-card/80 hover:shadow-xl"
 						>
 							<div className="mb-4">{feature.icon}</div>
 							<h3
