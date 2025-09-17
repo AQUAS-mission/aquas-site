@@ -46,7 +46,7 @@ const HeroSection = () => {
 		<section
 			id="hero"
 			ref={sectionRef}
-			className="relative min-h-screen flex items-center overflow-hidden fade-in"
+			className="relative min-h-screen flex items-center overflow-hidden fade-in scroll-snap-section"
 		>
 			{/* Background Image */}
 			<div className="absolute inset-0 z-0">
@@ -83,21 +83,39 @@ const HeroSection = () => {
 
 					<div className="flex flex-col sm:flex-row gap-6">
 						<button
-							onClick={() =>
-								document
-									.getElementById("solution")
-									?.scrollIntoView({ behavior: "smooth" })
-							}
+							onClick={() => {
+								const section =
+									document.getElementById("solution");
+								if (section) {
+									const rect =
+										section.getBoundingClientRect();
+									const scrollTop = window.pageYOffset;
+									const sectionTop = scrollTop + rect.top;
+									window.scrollTo({
+										top: sectionTop - 80, // Account for navbar
+										behavior: "smooth",
+									});
+								}
+							}}
 							className="btn-ocean"
 						>
 							Discover Our Technology
 						</button>
 						<button
-							onClick={() =>
-								document
-									.getElementById("contact")
-									?.scrollIntoView({ behavior: "smooth" })
-							}
+							onClick={() => {
+								const section =
+									document.getElementById("contact");
+								if (section) {
+									const rect =
+										section.getBoundingClientRect();
+									const scrollTop = window.pageYOffset;
+									const sectionTop = scrollTop + rect.top;
+									window.scrollTo({
+										top: sectionTop - 80, // Account for navbar
+										behavior: "smooth",
+									});
+								}
+							}}
 							className="bg-white/10 backdrop-blur-md border border-white/20 text-foreground px-10 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-white/20 hover:scale-[1.02] hover:shadow-xl"
 						>
 							Join Our Mission

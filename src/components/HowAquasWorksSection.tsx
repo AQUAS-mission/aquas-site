@@ -24,14 +24,14 @@ const HowAquasWorksSection = () => {
 		<section
 			id="how-aquas-works"
 			ref={sectionRef}
-			className="bg-surface fade-in"
+			className="section-gradient fade-in scroll-snap-section"
 			style={{
 				minHeight: "calc(100vh - 80px)", // Account for navbar height
 				maxHeight: "calc(100vh - 80px)",
 			}}
 		>
 			<div className="container mx-auto container-padding h-full flex flex-col pt-12 pb-4">
-				<div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 lg:p-12 rounded-3xl shadow-ocean flex-1 min-h-0">
+				<div className="bg-surface p-6 lg:p-12 rounded-3xl shadow-ocean border border-border/10 flex-1 min-h-0">
 					<div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full">
 						<div className="flex flex-col justify-center">
 							<h3

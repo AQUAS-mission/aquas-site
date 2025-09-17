@@ -13,9 +13,21 @@ const Navbar = () => {
 	}, []);
 
 	const scrollToSection = (sectionId: string) => {
-		document
-			.getElementById(sectionId)
-			?.scrollIntoView({ behavior: "smooth" });
+		const section = document.getElementById(sectionId);
+		if (section) {
+			const rect = section.getBoundingClientRect();
+			const scrollTop = window.pageYOffset;
+			const sectionTop = scrollTop + rect.top;
+
+			// Don't offset hero section, but offset others for navbar height
+			const targetPosition =
+				sectionId === "hero" ? sectionTop : sectionTop - 80; // 80px navbar height
+
+			window.scrollTo({
+				top: targetPosition,
+				behavior: "smooth",
+			});
+		}
 	};
 
 	return (

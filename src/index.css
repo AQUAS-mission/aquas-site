@@ -52,11 +52,18 @@
 		--sidebar-ring: 201 100% 30%;
 	}
 }
+
 body {
 	font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 	background-color: hsl(var(--background));
 	color: hsl(var(--foreground));
 	scroll-behavior: smooth;
+}
+
+/* Gentle Scroll Snap Container */
+html {
+	scroll-snap-type: y proximity; /* Changed from mandatory to proximity for gentler snapping */
+	scroll-padding-top: 80px; /* Account for navbar height */
 }
 
 /* Typography */
@@ -136,4 +143,36 @@ body {
 
 .container-padding {
 	@apply px-8 lg:px-12;
+}
+
+/* Gentle Scroll Snap Sections */
+.scroll-snap-section {
+	scroll-snap-align: start;
+	scroll-snap-stop: normal; /* Changed from always to normal for gentler behavior */
+}
+
+/* Hero section doesn't need navbar offset */
+#hero.scroll-snap-section {
+	scroll-snap-align: start;
+}
+
+/* Smooth scroll snap behavior with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-snap-type: y proximity; /* Gentler than mandatory */
+		scroll-padding-top: 80px;
+	}
+
+	.scroll-snap-section {
+		scroll-snap-align: start;
+		scroll-snap-stop: normal;
+	}
+}
+
+/* Disable scroll snap on mobile and tablets for better touch experience */
+@media (max-width: 1024px) {
+	html {
+		scroll-snap-type: none;
+		scroll-padding-top: 0;
+	}
 }

@@ -52,7 +52,7 @@ const SolutionSection = () => {
 		<section
 			id="solution"
 			ref={sectionRef}
-			className="bg-background fade-in"
+			className="bg-background fade-in scroll-snap-section"
 			style={{
 				minHeight: "calc(100vh - 80px)", // Account for navbar height
 				maxHeight: "calc(100vh - 80px)",

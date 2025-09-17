@@ -117,7 +117,7 @@ const ContactSection = () => {
 		<section
 			id="contact"
 			ref={sectionRef}
-			className="section-spacing bg-surface fade-in"
+			className="section-spacing bg-surface fade-in scroll-snap-section"
 		>
 			<div className="container mx-auto container-padding">
 				<div className="text-center mb-20">
@@ -133,7 +133,7 @@ const ContactSection = () => {
 				<div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
 					{/* Contact Information */}
 					<div className="space-y-12">
-						<div>
+						<div className="bg-primary/20 p-8 rounded-2xl border border-primary/30">
 							<h3 className="font-heading text-3xl font-bold mb-8 text-surface-foreground">
 								Get in Touch
 							</h3>
@@ -168,7 +168,7 @@ const ContactSection = () => {
 							</div>
 						</div>
 
-						<div className="bg-primary/10 p-8 rounded-2xl border border-border/10">
+						<div className="bg-primary/20 p-8 rounded-2xl border border-primary/30">
 							<h4 className="text-xl font-semibold mb-6 text-surface-foreground">
 								Ideal Partners
 							</h4>
@@ -207,8 +207,8 @@ const ContactSection = () => {
 					</div>
 
 					{/* Contact Form */}
-					<div className="bg-card p-10 rounded-3xl shadow-ocean border border-border/10">
-						<h3 className="font-heading text-3xl font-bold mb-8 text-card-foreground">
+					<div className="bg-primary/20 p-10 rounded-3xl shadow-ocean border border-primary/30">
+						<h3 className="font-heading text-3xl font-bold mb-8 text-surface-foreground">
 							Send us a Message
 						</h3>
 
@@ -217,7 +217,7 @@ const ContactSection = () => {
 								<div>
 									<Label
 										htmlFor="name"
-										className="text-card-foreground text-lg font-medium"
+										className="text-surface-foreground text-lg font-medium"
 									>
 										Name *
 									</Label>
@@ -234,7 +234,7 @@ const ContactSection = () => {
 								<div>
 									<Label
 										htmlFor="company"
-										className="text-card-foreground text-lg font-medium"
+										className="text-surface-foreground text-lg font-medium"
 									>
 										Company
 									</Label>
@@ -253,7 +253,7 @@ const ContactSection = () => {
 								<div>
 									<Label
 										htmlFor="email"
-										className="text-card-foreground text-lg font-medium"
+										className="text-surface-foreground text-lg font-medium"
 									>
 										Email *
 									</Label>
@@ -271,7 +271,7 @@ const ContactSection = () => {
 								<div>
 									<Label
 										htmlFor="position"
-										className="text-card-foreground text-lg font-medium"
+										className="text-surface-foreground text-lg font-medium"
 									>
 										Position
 									</Label>
@@ -289,7 +289,7 @@ const ContactSection = () => {
 							<div>
 								<Label
 									htmlFor="message"
-									className="text-card-foreground text-lg font-medium"
+									className="text-surface-foreground text-lg font-medium"
 								>
 									Message *
 								</Label>
