@@ -117,11 +117,11 @@ const ContactSection = () => {
 		<section
 			id="contact"
 			ref={sectionRef}
-			className="section-spacing bg-surface fade-in scroll-snap-section"
+			className="py-16 lg:py-20 bg-surface fade-in scroll-snap-section"
 		>
 			<div className="container mx-auto container-padding">
-				<div className="text-center mb-20">
-					<h2 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-surface-foreground leading-tight">
+				<div className="text-center mb-12">
+					<h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-surface-foreground leading-tight">
 						Partner with <span className="text-primary">AQUAS</span>{" "}
 						to
 						<span className="block text-secondary mt-2">
@@ -130,7 +130,7 @@ const ContactSection = () => {
 					</h2>
 				</div>
 
-				<div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
+				<div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
 					{/* Contact Information */}
 					<div className="space-y-12">
 						<div className="bg-primary/20 p-8 rounded-2xl border border-primary/30">
